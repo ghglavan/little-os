@@ -16,6 +16,7 @@ iso
       | |-- stage2_eltorito
       |-- kernel.elf
 ```
+I didn't add `stage2_eltorito` so you should download and copy it to the right place.`kernel.elf` will be moved inside os directory by `make run`.
 
 So far all we can do is move the cursor on the second line and print `Welcome to Obeta OS` on the screen. I know is not much but is a start.
 
