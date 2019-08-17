@@ -1,5 +1,5 @@
 # Obeta OS
-Minimal (as minimal as it can be) os based on [little os book](https://littleosbook.github.io). So far we can only write on the screen and moove the cursor using the framebuffer. We dont have a bootloader so we use grub .You can find the bimary [here](http://littleosbook.github.com/files/stage2_eltorito). The reason we dont build it by hand is that we heard that the `configure` script doesn't work well on ubuntu systems and I'm to lazy to try.
+Minimal (as minimal as it can be) os based on [little os book](https://littleosbook.github.io). So far we can only write on the screen and moove the cursor using the framebuffer. We dont have a bootloader so we use grub .You can find the binary [here](http://littleosbook.github.com/files/stage2_eltorito). The reason we dont build it by hand is that we heard that the `configure` script doesn't work well on ubuntu systems and I'm to lazy to try.
 
 We use NASM as the assembler and `bochs` for virtualization.
 
