@@ -19,10 +19,11 @@ iso
 
 So far all we can do is move the cursor on the second line and print `Welcome to Obeta OS` on the screen. I know is not much but is a start.
 
-##Building
+## Building
 
 To build and run:
 ```
 make run
 ```
-then, in console type `c` to continue the simulation and start the boot process
+then, in console type `c` to continue the simulation and start the boot process.
+When you get bored of looking at the screen, you can use `C^ c` to pause `bosch` and `q` to quit. 
