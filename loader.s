@@ -1,12 +1,14 @@
 global loader                   ; the entry symbol for ELF
-extern print_str
+
+extern write_hello
+
 MAGIC_NUMBER equ 0x1BADB002     ; define the magic number constant
 FLAGS        equ 0x0            ; multiboot flags
 CHECKSUM     equ -MAGIC_NUMBER  ; calculate the checksum
 
 MY_STR db "Welcome to Obeta OS",0
                                 ; (magic number + checksum + flags should equal 0)
-section .text:                  ; start of the text (code) section
+section .text                   ; start of the text (code) section
 align 4                         ; the code must be 4 byte aligned
     dd MAGIC_NUMBER             ; write the magic number to the machine code,
     dd FLAGS                    ; the flags,
@@ -14,24 +16,8 @@ align 4                         ; the code must be 4 byte aligned
 
 loader:                         ; the loader label (defined as entry point in linker script)
     mov esp, kernel_stack + KERNEL_STACK_SIZE ; point esp to the start of the stack
-    mov dx, 0x03D4
-    mov al, 0x0F
-    out dx, al
- 
-    inc dl
-    mov al, 0x50
-    out dx, al
- 
-    dec dl
-    mov al, 0x0E
-    out dx, al
-    
-    inc dl
-    mov al, 0x00
-    out dx, al
 
-    push DWORD MY_STR
-    call print_str
+    call write_hello
 
 .loop:
     jmp .loop                   ; loop forever
