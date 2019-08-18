@@ -16,9 +16,9 @@ iso
       | |-- stage2_eltorito
       |-- kernel.elf
 ```
-I didn't add `stage2_eltorito` so you should download and copy it to the right place.`kernel.elf` will be moved inside os directory by `make run`.
+I didn't add `stage2_eltorito` so you should download and copy it to the right place or you can use the `setup.sh` script.`kernel.elf` will be moved inside os directory by `make run`.
 
-So far all we can do is print using the framebuffer and move the cursor and print to serial. I know is not much but is a start.
+So far all we can do is print in a prinf-like style (even tho we dont have va_list) using the framebuffer and move the cursor or using the serial. I know is not much but is a start.
 
 ## Building
 
@@ -27,4 +27,4 @@ To build and run:
 make run
 ```
 then, in console type `c` to continue the simulation and start the boot process.
-When you get bored of looking at the screen, you can use `C^ c` to pause `bosch` and `q` to quit. 
+When you get bored of looking at the screen, you can use `C^ c` to pause `bochs` and `q` to quit. 
