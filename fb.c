@@ -77,7 +77,7 @@ static void fb_write_cell(char c, unsigned char fg, unsigned char bg)
     }
 }
 
-int fb_write(char *buf, unsigned int len)
+int fb_write(const char *buf, unsigned int len)
 {
     unsigned int cells_left = fb_line_w * fb_line_h - fb_cursor_y * fb_line_w + fb_cursor_x;
     if (len > cells_left)
@@ -89,8 +89,5 @@ int fb_write(char *buf, unsigned int len)
         fb_write_cell(buf[i], FB_COLOR_DARK_GREY, FB_COLOR_GREEN);
     }
 
-    if (i < len)
-        len = i;
-
-    return len;
+    return i;
 }

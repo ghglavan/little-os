@@ -10,4 +10,12 @@
  */
 void outb(unsigned short port, unsigned int data);
 
+/** inb:
+ *  Read a byte from an I/O port
+ * 
+ *  @param port The port to read from
+ *  @return     The read byte 
+ */
+unsigned char inb(unsigned short port);
+
 #endif // IO_H_INCLUDE
