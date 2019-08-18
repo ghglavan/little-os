@@ -37,7 +37,7 @@ static void fb_move_cursor()
  *  @param fg The foreground color
  *  @param bg The background color
  */
-static void fb_write_cell(char c, unsigned char fg, unsigned char bg)
+static void fb_write_cell(const char c, unsigned char fg, unsigned char bg)
 {
     unsigned int i = fb_cursor_y * fb_line_w + fb_cursor_x;
     i *= 2;
@@ -77,17 +77,7 @@ static void fb_write_cell(char c, unsigned char fg, unsigned char bg)
     }
 }
 
-int fb_write(const char *buf, unsigned int len)
+void fb_putc(const char c)
 {
-    unsigned int cells_left = fb_line_w * fb_line_h - fb_cursor_y * fb_line_w + fb_cursor_x;
-    if (len > cells_left)
-        len = cells_left;
-
-    unsigned int i;
-    for (i = 0; i < len && buf[i] != 0; ++i)
-    {
-        fb_write_cell(buf[i], FB_COLOR_DARK_GREY, FB_COLOR_GREEN);
-    }
-
-    return i;
+    fb_write_cell(c, 8, 2);
 }

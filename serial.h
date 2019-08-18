@@ -1,12 +1,11 @@
 #ifndef SERIAL_H_INCLUDE
 #define SERIAL_H_INCLUDE
 
-/** serial_write:
- *  Writes the given string to the SERIAL_COM1_BASE port
+/** serial_putc:
+ *  Writes the given char to the SERIAL_COM1_BASE port
  * 
- *  @param buf The string to be written
- *  @param len The length of the string
+ *  @param c The char to be written
  */
-int serial_write(char *buf, unsigned int len);
+void serial_putc(const char c);
 
 #endif // SERIAL_H_INCLUDE

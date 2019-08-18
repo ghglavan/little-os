@@ -89,9 +89,8 @@ static int serial_is_transmit_fifo_empty(unsigned int com)
 
 static int serial_setup_done = 0;
 
-int serial_write(const char *buf, unsigned int len)
+void serial_putc(const char c)
 {
-
     if (!serial_setup_done)
     {
         serial_configure_baud_rate(SERIAL_COM1_BASE, 1);
@@ -100,15 +99,8 @@ int serial_write(const char *buf, unsigned int len)
         serial_configure_modem(SERIAL_COM1_BASE);
         serial_setup_done = 1;
     }
-
-    unsigned int i = 0;
-    for (; i < len && buf[i] != 0; ++i)
+    while (!serial_is_transmit_fifo_empty(SERIAL_COM1_BASE))
     {
-        while (!serial_is_transmit_fifo_empty(SERIAL_COM1_BASE))
-        {
-        }
-        outb(SERIAL_DATA_PORT(SERIAL_COM1_BASE), buf[i]);
     }
-
-    return i;
+    outb(SERIAL_DATA_PORT(SERIAL_COM1_BASE), c);
 }
