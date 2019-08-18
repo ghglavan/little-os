@@ -3,4 +3,5 @@ iso/boot/grub/stage2_eltorito
 *.elf
 *.iso
 *.o
+*.out
 bochslog.txt
